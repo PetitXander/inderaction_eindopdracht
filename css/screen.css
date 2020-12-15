@@ -1,0 +1,1255 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF;
+    --global-color-alpha-dark: #2E77E6;
+
+    --global-background-color : #242C56;
+    --global-font-color: white;
+}
+
+/* CSS variables here */
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: arial, sans-serif;
+    color: var(--global-font-color);
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--global-background-color);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+::-moz-selection {
+    background:#3385FF;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: #3385FF;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin: 0 0 24px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    color: #BFC0C0;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+a:visited {    
+    color: var(--global-color-alpha);
+}
+
+a:hover {
+    color: var(--global-color-alpha-light);
+}
+a:active {
+    color:#3385FF;
+}
+
+
+a:focus {
+    color: #4643ff;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.o-row {
+    position: relative;
+    padding: 24px 24px 0;
+}
+
+.o-row--login {
+    /* stuff here to align the card */
+}
+
+/* size modifiers */
+
+.o-row--lg {
+    padding-top: 48px;
+    padding-bottom: 24px;
+}
+
+.o-row--xl {
+    padding-top: 72px;
+    padding-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+    .o-row {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+
+@media (min-width: 992px) {
+    .o-row--xl {
+        padding-top: 96px;
+        padding-bottom: 72px;
+    }
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 79.5em; /* 79.5 * 16px = 1272 */
+    width: 100%;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    position: relative;
+}
+
+.o-section + .o-section {
+    padding-top: 24px;
+}
+
+@media (min-width: 768px) {
+    .o-section--lg + .o-section--lg,
+    .o-section--xl + .o-section--xl {
+        padding-top: 48px;
+    }
+}
+
+@media (min-width: 992px) {
+    .o-section--xl + .o-section--xl {
+        padding-top: 72px;
+    }
+}
+
+/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.o-layout__item {
+    width: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+    padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+    margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+    padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+    margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+    padding: 0 24px;
+}
+
+.o-layout--gutter-xl {
+    margin: 0 -48px;
+}
+
+.o-layout--gutter-xl > .o-layout__item {
+    padding: 0 48px;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+    justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+    justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+    justify-content: center;
+}
+
+.o-layout--justify-space-around {
+    justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+    justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+    align-items: flex-start;
+}
+
+.o-layout--align-end {
+    align-items: flex-end;
+}
+
+.o-layout--align-center {
+    align-items: center;
+}
+
+.o-layout--align-baseline {
+    align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+    align-content: start;
+}
+
+.o-layout--align-content-end {
+    align-content: end;
+}
+
+.o-layout--align-content-center {
+    align-content: center;
+}
+
+.o-layout--align-content-space-around {
+    align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+    align-content: space-between;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+/*
+    Component: Logo
+    ---
+     logo
+*/
+.image_div{
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.image_coin{
+    width: 100px;
+    height: 100px;
+    
+
+
+}
+
+.price_div{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    font-size: 24px;
+}
+
+.percentage_div{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    font-size: 20px;
+}
+
+
+.div_chart{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    height: 28vh;
+}
+
+.div_last{
+    display: flex;
+    justify-content: center;
+}
+
+.div_volume{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    font-size: 20px;
+
+}
+
+.div_max_min{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+    font-size: 20px;
+
+}
+
+
+
+@media (min-width: 500px){
+    .image_coin{
+        width: 150px;
+        height: 150px;
+    }
+
+}
+
+/*
+    Component: email + form
+    ---
+    
+*/
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.form__field::placeholder {
+    color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+}
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #9b9b9b;
+}
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;
+    font-weight: 700;
+}
+/* reset input */
+.form__field:required, .form__field:invalid {
+    box-shadow: none;
+}
+
+/*
+    Component: submitbutton
+    ---
+    
+*/
+
+@keyframes button-loading {
+    20% {
+        color: transparent;
+        transform: scale(1, 1);
+   }
+    40% {
+        border-color: #5585ff;
+        background-color: transparent;
+        transform: scale(1, 1);
+   }
+    60% {
+        transform: scale(0.7, 1.1);
+        margin-left: 1.25rem;
+        width: 2.5rem;
+        text-indent: -0.6125rem;
+        color: transparent;
+        border-color: #5585ff;
+        background-color: #5585ff;
+   }
+    80% {
+        transform: scale(1, 1);
+   }
+    100% {
+        margin-left: 1.25rem;
+        width: 2.5rem;
+        background-color: #5585ff;
+        border-color: #5585ff;
+        color: transparent;
+   }
+}
+@keyframes button-dot-intro {
+    0% {
+        opacity: 0;
+   }
+    60% {
+        opacity: 1;
+        transform: scale(1, 1);
+   }
+    100% {
+        transform: scale(0.75, 0.75);
+   }
+}
+@keyframes button-dot-pulse {
+    0% {
+        opacity: 1;
+        transform: scale(0.75, 0.75);
+   }
+    15% {
+        transform: scale(0.85, 0.85);
+   }
+    45% {
+        transform: scale(0.75, 0.75);
+   }
+    55% {
+        transform: scale(0.95, 0.95);
+   }
+    85% {
+        transform: scale(0.75, 0.75);
+   }
+    100% {
+        opacity: 1;
+        transform: scale(0.75, 0.75);
+   }
+}
+@keyframes button-ready {
+    0% {
+        margin-left: 1.25rem;
+        width: 2.5rem;
+   }
+    10% {
+        background-color: #5585ff;
+        border-color: #5585ff;
+   }
+    70% {
+        margin: 0;
+        width: 7.25rem;
+        background-color: #fff;
+        transform: scale(1.1, 1.1);
+   }
+    100% {
+        margin: 0;
+        width: 7rem;
+        border-color: #8cce1e;
+        background-color: #fff;
+   }
+}
+@keyframes button-dot-outro {
+    0% {
+        opacity: 1;
+   }
+    100% {
+        opacity: 0;
+        transform: scale(1, 1);
+   }
+}
+@keyframes button-ready-label {
+    0% {
+        opacity: 0;
+   }
+    100% {
+        opacity: 1;
+   }
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+    width: 7rem;
+    color: #5585ff;
+    border: 2px solid #5585ff;
+    background-color: var(--global-background-color);
+    cursor: pointer;
+    line-height: 2;
+    margin: 0;
+    padding: 0;
+    border-radius: 1.5rem;
+    font-size: 1.125rem;
+    text-transform: lowercase;
+    outline: none;
+    transition: transform 0.125s;
+}
+button:active {
+    transform: scale(0.9, 0.9);
+}
+button:before, button:after {
+    position: absolute;
+    opacity: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    margin-top: -1.125rem;
+    margin-left: -1.125rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    content: '';
+    z-index: 1;
+}
+button.loading {
+    animation: button-loading 0.5s forwards;
+}
+button.loading:before {
+    opacity: 1;
+    animation: button-dot-intro 0.5s forwards;
+}
+button.loading:after {
+    opacity: 0;
+    animation: button-dot-pulse 1.5s infinite 0.5s;
+}
+button.ready {
+    text-indent: 0;
+    color: var(--global-background-color);
+    background-color: #5585ff;
+    animation: button-ready 0.333s forwards;
+}
+button.ready:before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background-color: var(--global-background-color);
+    color: #8cce1e;
+    content: 'Subscribed';
+    opacity: 0;
+    z-index: 2;
+    animation: button-ready-label 0.5s forwards 0.275s;
+}
+button.ready:after {
+    opacity: 1;
+    animation: button-dot-outro 0.333s;
+}
+
+
+
+/*
+    Component: grid
+    ---
+    
+*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1.5fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "titel titel titel titel"
+      "intro intro intro intro"
+      "email email mockup mockup";
+  }
+.titel { 
+    grid-area: titel;
+    text-align: center; }
+.intro { 
+    grid-area: intro;
+    text-align: center;
+}
+.email { 
+    grid-area: email;
+    text-align: center;
+    display: block;
+    
+ }
+.mockup { grid-area: mockup; }
+
+/*
+    Component: button
+    ---
+    
+*/
+
+.button_2 {
+    display: inline-flex;
+    height: 40px;
+    width: 150px;
+    border: 2px solid #BFC0C0;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #button-2 {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  #button-2 a {
+    position: relative;
+    transition: all .35s ease-Out;
+  }
+  
+  #slide {
+    width: 100%;
+    height: 100%;
+    left: -200px;
+    background: #BFC0C0;
+    position: absolute;
+    transition: all .35s ease-Out;
+    bottom: 0;
+  }
+  
+  #button-2:hover #slide {
+    left: 0;
+  }
+  
+  #button-2:hover a {
+    color: #2D3142;
+  }
+  
+
+/*
+    Component: selection
+    ---
+     selection
+*/
+
+.selection{
+    display:  flex;
+    justify-content: center;
+    
+}
+
+.select{
+    background-color: var(--global-background-color);
+    color: var(--global-font-color);
+    border-color: var(--global-font-color);
+    
+}
+
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+    padding-top: 0 !important;
+}
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+    margin-bottom: 4px !important;
+}
+
+.u-mb-sm {
+    margin-bottom: 8px !important;
+}
+
+.u-mb-md {
+    margin-bottom: 16px !important;
+}
+
+.u-mb-lg {
+    margin-bottom: 32px !important;
+}
+
+.u-mb-xl {
+    margin-bottom: 48px !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-xs {
+    max-width: 27em !important;
+}
+
+.u-max-width-sm {
+    max-width: 39em !important;
+}
+
+.u-max-width-md {
+    max-width: 50em !important;
+}
+
+.u-max-width-lg {
+    max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+
+/*
+    Utilities: align
+    ---
+    Utility classes align text or components
+*/
+
+.u-align-text-center {
+    text-align: center;
+}
+
+.u-align-center {
+    margin: 0 auto;
+}
+
+/*
+    Utilities: text
+    Utility classes to create smaller or bigger test
+*/
+
+.u-text-sm {
+    font-size: 14px;
+}
+
+/*
+    Utility: Widths
+    ---
+    Utility classes to put specific widths onto elements
+    Will be mostly used on o-layout__item
+*/
+
+.u-width-auto {
+    width: auto !important;
+}
+
+.u-1-of-2 {
+    width: 50% !important;
+}
+
+.u-1-of-3 {
+    width: 33.3333333333% !important;
+}
+
+.u-2-of-3 {
+    width: 66.6666666667% !important;
+}
+
+.u-1-of-4 {
+    width: 25% !important;
+}
+
+.u-3-of-4 {
+    width: 75% !important;
+}
+
+.u-1-of-5 {
+    width: 20% !important;
+}
+
+.u-2-of-5 {
+    width: 40% !important;
+}
+
+.u-3-of-5 {
+    width: 60% !important;
+}
+
+.u-4-of-5 {
+    width: 80% !important;
+}
+
+.u-1-of-6 {
+    width: 16.6666666667% !important;
+}
+
+.u-5-of-6 {
+    width: 83.3333333333% !important;
+}
+
+@media (min-width: 576px) {
+    .u-1-of-2-bp1 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp1 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp1 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp1 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp1 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp1 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp1 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp1 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp1 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp1 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp1 {
+        width: 83.3333333333% !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .u-1-of-2-bp2 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp2 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp2 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp2 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp2 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp2 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp2 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp2 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp2 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp2 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp2 {
+        width: 83.3333333333% !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .u-1-of-2-bp3 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp3 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp3 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp3 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp3 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp3 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp3 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp3 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp3 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp3 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp3 {
+        width: 83.3333333333% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .u-1-of-2-bp4 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp4 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp4 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp4 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp4 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp4 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp4 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp4 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp4 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp4 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp4 {
+        width: 83.3333333333% !important;
+    }
+}
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Media Queries
+    ---
+    EXAMPLE Media Queries for Responsive Design.
+    These examples override the primary ('mobile first') styles.
+    USE THEM INLINE!
+*/
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in mobile first design
+*/
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+*/
+
+/* Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+*/
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+@media (min-width: 992px) {}
+*/
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Eindopdracht - Interaction</title>
+        <meta name="description" content="This is my HTML5 boilerplate.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+        <script src="script/app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/slider.css" />
+        <script src="script/slider.js"></script>
+
+
+    </head>
+    <body>
+        <section class="o-row o-row--lg o-row--login o-row--beta">
+            <div class="o-container u-max-width-xs">
+                <div class="selection">
+                    <select name="select_coin" class="select" id="select_coin">
+                        <option value="bitcoin">BTC</option>
+                        <option value="ethereum">ETH</option>
+                        <option value="monero">XMR</option>
+                    </select>
+
+                    <select name="select_cur" class="select" id="select_cur">
+                        <option value="eur">EUR</option>
+                        <option value="usd">USD</option>
+                        <option value="btc">BTC</option>
+                    </select>
+                </div>
+                <div class="image_div">
+                    <img class="image_coin" id="image_coin" src="svg/833.svg" alt="icon">
+                </div>
+                <div class="price_div">
+                    <p id="price_coin">€ 100</p>
+                </div>
+                <div class="percentage_div">
+                    <p id="percentage_coin">0%</p>
+                </div>
+                <div class="div_chart">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="selection">
+                    <select name="select_view" class="select" id="select_view">
+                        <option value="1">24h</option>
+                        <option value="2">7d</option>
+                        <option value="3">14d</option>
+                        <option value="4">30d</option>
+                        <option value="5">1/2 year</option>
+                        <option value="6">1 year</option>
+                    </select>
+                </div>
+                <div class="div_volume">
+                    <p>Total volume</p>
+                    <p id="volume_coin">13.2M</p>
+                </div>
+                <div class="div_last">
+                    Last 24h
+                </div>
+                <div class="div_max_min">
+                    <p id="min_coin">303</p>
+                    <p id="max_coin">314</p>
+                </div>
+
+            </div>
+        </section>
+    </body>
+</html>
+
