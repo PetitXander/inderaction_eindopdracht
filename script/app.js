@@ -208,13 +208,25 @@ const load_chart = async (vs_coin, vs_currency, result_view) =>{
             scales: {
                 yAxes: [{
                     ticks: {
+                        fontColor : "white",
+                        beginAtZero: false
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor : "white",
                         beginAtZero: false
                     }
                 }]
+            },
+            legend: {
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: 'white'
             }
         }
+        }
     });
-
 }
 
 const load_new_chart = async (vs_coin, vs_currency, result_view) =>{
@@ -335,10 +347,23 @@ const load_new_chart = async (vs_coin, vs_currency, result_view) =>{
             scales: {
                 yAxes: [{
                     ticks: {
+                        fontColor : "white",
+                        beginAtZero: false
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor : "white",
                         beginAtZero: false
                     }
                 }]
+            },
+            legend: {
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: 'white'
             }
+        }
         }
     });
 
