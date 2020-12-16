@@ -489,6 +489,12 @@ a:focus {
     font-size: 20px;
 }
 
+.titel_mainpage{
+    display: flex;
+    justify-content: center;
+
+}
+
 
 .div_chart{
     display: flex;
@@ -517,6 +523,8 @@ a:focus {
     font-size: 20px;
 
 }
+
+
 
 
 
