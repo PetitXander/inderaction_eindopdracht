@@ -1,4 +1,4 @@
-
+var myChart;
 
 
 const getCoinData = async (vs_coin, vs_currency, result_view) =>{
@@ -9,7 +9,20 @@ const getCoinData = async (vs_coin, vs_currency, result_view) =>{
 	.then((res) => res.json())
     .catch(err => console.error(err))
     
+    var prefix
 
+    if(vs_currency == "eur"){
+        prefix = "€ ";
+    }
+    else if (vs_currency == "usd"){
+        prefix = "$ ";
+    }
+    else if (vs_currency == "jpy"){
+        prefix = "¥ ";
+    }
+    else{
+
+    }
 
     console.log(data[0]);
     var image = data[0].image;
@@ -17,7 +30,7 @@ const getCoinData = async (vs_coin, vs_currency, result_view) =>{
     document.getElementById('image_coin').src = image;
 
     var price = data[0].current_price;
-    document.getElementById('price_coin').innerHTML = price;
+    document.getElementById('price_coin').innerHTML = prefix + price;
 
     var percentage  = data[0].price_change_percentage_24h;
     percentage = percentage.toFixed(2) + " %";
@@ -39,9 +52,9 @@ const getCoinData = async (vs_coin, vs_currency, result_view) =>{
     document.getElementById('volume_coin').innerHTML = volume;
 
     var max_24h = data[0].high_24h;
-    document.getElementById('max_coin').innerHTML = max_24h;
+    document.getElementById('max_coin').innerHTML = prefix + max_24h;
     var min_24h = data[0].low_24h;
-    document.getElementById('min_coin').innerHTML = min_24h;
+    document.getElementById('min_coin').innerHTML = prefix + min_24h;
 
 
     
