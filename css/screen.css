@@ -805,6 +805,18 @@ button.ready:after {
  }
 .mockup { grid-area: mockup; }
 
+@media screen and (max-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
 /*
     Component: button
     ---
