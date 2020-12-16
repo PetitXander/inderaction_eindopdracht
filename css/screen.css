@@ -1,7 +1,17 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
+@font-face {
+    font-family: "Inter Web";
+    font-weight: 400;
+    src: url("../fonts/Inter-Regular.woff2") format("woff2")
+}
 
+@font-face {
+    font-family: "Inter Web";
+    font-weight: 600;
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2")
+}
 
 /*------------------------------------*\
 #Variables
@@ -31,7 +41,7 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: arial, sans-serif;
+    font-family: "Inter Web", arial, sans-serif;
     color: var(--global-font-color);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
