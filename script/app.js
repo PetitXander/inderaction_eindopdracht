@@ -7,7 +7,7 @@ const getCoinData = async (vs_coin, vs_currency, result_view) =>{
 
     const data = await fetch(url)
 	.then((res) => res.json())
-	.catch(err => console.error(err))
+    .catch(err => console.error(err))
 	
     console.log(data[0]);
     var image = data[0].image;

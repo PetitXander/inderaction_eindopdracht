@@ -865,7 +865,7 @@ button.ready:after {
 
 .selection{
     display:  flex;
-    justify-content: center;
+    justify-content: space-around;
     
 }
 
