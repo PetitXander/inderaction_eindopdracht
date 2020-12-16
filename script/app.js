@@ -8,7 +8,9 @@ const getCoinData = async (vs_coin, vs_currency, result_view) =>{
     const data = await fetch(url)
 	.then((res) => res.json())
     .catch(err => console.error(err))
-	
+    
+
+
     console.log(data[0]);
     var image = data[0].image;
 
@@ -42,7 +44,7 @@ const getCoinData = async (vs_coin, vs_currency, result_view) =>{
     document.getElementById('min_coin').innerHTML = min_24h;
 
 
-    load_chart(vs_coin, vs_currency, result_view);
+    
 
 };
 
@@ -223,12 +225,14 @@ document.addEventListener('DOMContentLoaded', function() {
         result_coin = coin.options[coin.selectedIndex].value;
         console.log(result_coin);
         getCoinData(result_coin, result_cur);
+        load_chart(result_coin, result_cur, result_view);
     })
 
     cur.addEventListener("change", function() {
         result_cur = cur.options[cur.selectedIndex].value;
         console.log(result_cur);
         getCoinData(result_coin, result_cur);
+        load_chart(result_coin, result_cur, result_view);
     })
 
     view.addEventListener("change", function() {
@@ -241,5 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
 	console.log("domcontent loaded")
-	getCoinData(result_coin, result_cur, result_view);
+    getCoinData(result_coin, result_cur, result_view);
+    load_chart(result_coin, result_cur, result_view);
 });
