@@ -1,5 +1,4 @@
-var myChart;
-
+var myChart, ctx;
 
 const getCoinData = async (vs_coin, vs_currency, result_view) =>{
     document.getElementById('image_coin').src = "svg/833.svg";
@@ -154,8 +153,135 @@ const load_chart = async (vs_coin, vs_currency, result_view) =>{
     
 
     
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    ctx = document.getElementById('myChart').getContext('2d');
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: arr_time,
+            datasets: [{
+                label: 'Price',
+                data: arr_price,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            }
+        }
+    });
+
+}
+
+const load_new_chart = async (vs_coin, vs_currency, result_view) =>{
+
+    var ts = Math.round(new Date().getTime() / 1000);
+    var ts2 = new Date();
+     // 24h : ts - (24 * 3600)
+     // 7d : ts - (24 * 3600 * 7)
+
+    if (result_view == 1){
+        var ts2 = ts - (24 * 3600);
+    }
+    else if (result_view == 2){
+        var ts2 = ts - (24 * 3600 * 7);
+    }
+    else if (result_view == 3){
+        var ts2 = ts - (24 * 3600 * 14);
+    }
+    else if (result_view == 4){
+        var ts2 = ts - (24 * 3600 * 30);
+    }
+    else if (result_view == 5){
+        var ts2 = ts - (24 * 3600 * 183);
+    }
+    else if (result_view == 6){
+        var ts2 = ts - (24 * 3600 * 365);
+    }
+    
+
+    let url = `https://api.coingecko.com/api/v3/coins/${vs_coin}/market_chart/range?vs_currency=${vs_currency}&from=${ts2}&to=${ts}`;
+    
+    const data = await fetch(url)
+	.then((res) => res.json())
+    .catch(err => console.error(err))
+    
+    console.log(data.prices);
+
+    var spaced = distributedCopy(data.prices, 14);
+    console.log(spaced);
+
+    var arr_time = new Array();
+    var arr_price = new Array();
+    var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+     
+
+    spaced.forEach(element =>{
+        var date = new Date(element[0]);
+        var year = date.getFullYear();
+        var month = months_arr[date.getMonth()];
+        var day = date.getDate();
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        var formattedTime = day+'-'+month+'-'+year+' '+hours + ':' + minutes.substr(-2);
+        arr_time.push(formattedTime);
+
+        var price = element[1];
+        price = price.toFixed(0);
+        arr_price.push(price);
+    })
+
+    console.log(arr_time);
+    console.log(arr_price);
+    
+
+    
+    myChart.destroy()
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: arr_time,
@@ -234,30 +360,30 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(result_view);
 
 
+    
+
+    // alles voor ophalen currency
+	console.log("domcontent loaded")
+    getCoinData(result_coin, result_cur, result_view);
+    load_chart(result_coin, result_cur, result_view);
+
     coin.addEventListener("change", function() {
         result_coin = coin.options[coin.selectedIndex].value;
         console.log(result_coin);
         getCoinData(result_coin, result_cur);
-        load_chart(result_coin, result_cur, result_view);
+        load_new_chart(result_coin, result_cur, result_view);
     })
 
     cur.addEventListener("change", function() {
         result_cur = cur.options[cur.selectedIndex].value;
         console.log(result_cur);
         getCoinData(result_coin, result_cur);
-        load_chart(result_coin, result_cur, result_view);
+        load_new_chart(result_coin, result_cur, result_view);
     })
 
     view.addEventListener("change", function() {
         result_view = view.options[view.selectedIndex].value;
         console.log(result_view);
-        load_chart(result_coin, result_cur, result_view);
+        load_new_chart(result_coin, result_cur, result_view);
     })
-
-    // alles voor ophalen currency
-    
-    
-	console.log("domcontent loaded")
-    getCoinData(result_coin, result_cur, result_view);
-    load_chart(result_coin, result_cur, result_view);
 });
